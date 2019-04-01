@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block body_block%}
+{% if user.is_authenticated %}
+<h2>Files Are</h2>
+<a class='btn btn-primary' href="{% url 'accounts:addfile' %}"><span class='glyphicon glyphicon-pencil'>Add File</span></a>
+
+
+{% for item in user.docs.all %}
+
+
+<div class="jumbotron">
+<h2>{{item.name}}</h2>
+<p>Published on: {{item.uploaded_on|date:"D M Y"}}</p>
+  <h2><a href="{{ item.file.url }}">File</a></h2>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+<h1>Login To see Your Files Now</h1>
+
+{% endif %}
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load bootstrap3%}
+{% block body_block%}
+
+<div class="container">
+  <h1>Add Image</h1>
+  <form  method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <input type="submit" class="btn btn-primary" value="Add">
+
+  </form>
+
+
+</div>
+
+
+
+
+{% endblock%}

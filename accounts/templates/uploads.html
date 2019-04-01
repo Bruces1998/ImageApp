@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load staticfiles %}
+{% block body_block%}
+{% if user.is_authenticated %}
+<h2>Images Are</h2>
+<a class='btn btn-primary' href="{% url 'accounts:addimage' %}"><span class='glyphicon glyphicon-pencil'>Add Image</span></a>
+
+
+{% for item in user.pics.all %}
+
+
+<div class="container">
+  <p>Published on: {{item.uploaded_on|date:"D M Y"}}</p>
+  <div class="row">
+  <div class="col-md-4">
+    <div class="thumbnail">
+
+
+
+        <img src="{{ item.image.url }}" alt="Lights" style="width:100%">
+        <div class="caption">
+          <p>{{item.name}}</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+{% endfor %}
+
+{% else %}
+<h1>Login To see Your Images Now</h1>
+
+{% endif %}
+
+{% endblock %}
